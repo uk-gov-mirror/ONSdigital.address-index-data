@@ -287,7 +287,7 @@ object SqlHelper {
 
         val nisraClassCode: String = Try(outputNisra.headOption.flatMap(_.get("classificationCode").map(_.toString)).getOrElse("")).getOrElse("")
         val classificationCode: Option[String] = {
-          if (nisraClassCode == "")
+          if (nisraClassCode == null || nisraClassCode == "")
             classifications.map(row => row.getAs[String]("classificationCode")).headOption
           else
             Some(nisraCodeToABP(nisraClassCode))
@@ -490,7 +490,7 @@ object SqlHelper {
 
         val nisraClassCode: String = Try(outputNisra.headOption.flatMap(_.get("classificationCode").map(_.toString)).getOrElse("")).getOrElse("")
         val classificationCode: Option[String] = {
-          if (nisraClassCode == "")
+          if (nisraClassCode == null || nisraClassCode == "")
             classifications.map(row => row.getAs[String]("classificationCode")).headOption
           else
             Some(nisraCodeToABP(nisraClassCode))
