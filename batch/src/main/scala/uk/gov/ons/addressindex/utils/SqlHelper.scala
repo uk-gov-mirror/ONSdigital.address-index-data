@@ -293,7 +293,34 @@ object SqlHelper {
           if (nisraClassCode.isEmpty)
             classifications.map(row => row.getAs[String]("classificationCode")).headOption
           else
-            Some("O")
+            nisraClassCode match {
+              case null => None
+              case "DO_DETACHED" => Some("RD02")
+              case "DO_SEMI" => Some("RD03")
+              case "ND_RETAIL" => Some("CR")
+              case "NON_POSTAL" => Some("O")
+              case "DO_TERRACE" => Some("RD04")
+              case "ND_ENTERTAINMENT" => Some("CL")
+              case "ND_HOSPITALITY" => Some("CH")
+              case "ND_SPORTING" => Some("CL06")
+              case "DO_APART" => Some("RD06")
+              case "ND_INDUSTRY" => Some("CI")
+              case "ND_EDUCATION" => Some("CE")
+              case "ND_RELIGIOUS" => Some("ZW")
+              case "ND_COMM_OTHER" => Some("C")
+              case "ND_OTHER" => Some("C")
+              case "ND_AGRICULTURE" => Some("CA")
+              case "DO_OTHER" => Some("RD")
+              case "ND_OFFICE" => Some("CO")
+              case "ND_HEALTH" => Some("CM")
+              case "ND_LEGAL" => Some("CC02")
+              case "ND_CULTURE" => Some("CL04")
+              case "ND_ENTS_OTHER" => Some("CL")
+              case "ND_CULTURE_OTHER" => Some("CL04")
+              case "ND_INDUST_OTHER" => Some("CI")
+              case _ => Some("O")
+            }
+         //   Some("O")
          //   Some(nisraCodeToABP(nisraClassCode))
         }
 
