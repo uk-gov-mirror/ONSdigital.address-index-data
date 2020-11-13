@@ -53,7 +53,7 @@ For usage see below:
     AddressIndexFileReader.validateFileNames()
     postMapping(indexName, skinny = opts.skinny())
     preLoad(indexName)
-    saveHybridAddresses(historical = !opts.hybridNoHist(), skinncd y = opts.skinny(), nisra = opts.nisra(), nisraAddress1YearAgo = opts.yearago())
+    saveHybridAddresses(historical = !opts.hybridNoHist(), skinny = opts.skinny(), nisra = opts.nisra(), nisraAddress1YearAgo = opts.yearago())
     postLoad(indexName)
   } else opts.printHelp()
   // comment out for local test - end
